@@ -1,0 +1,40 @@
+server:
+  port: 8888
+
+logging:
+  path: ./logs/spring-boot-logger.lo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${MCSVC_EUREKA_HOST_1_URL}
+    healthcheck:
+      enabled: true
+
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${MCSVC_CONFIG_GIT_URL}
+          username: ${MCSVC_CONFIG_GIT_USERNAME}
+          password: ${MCSVC_CONFIG_GIT_PASSWORD}
+          #false will allow the config server to start without git and fallback to it's local copy
+          clone-on-start: false
+          timeout: 60
+          # forces pull if the index is dirty, removing local changes
+          force-pull: true
+
+
+encrypt:
+  # Symmetric encryption
+  key: set-on-startup

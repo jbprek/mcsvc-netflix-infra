@@ -1,0 +1,38 @@
+version: '3'
+services:
+
+  #Eureka Service
+  discovery:
+    container_name: discovery
+    image: jbprek/mcsvc-infra-eureka-service:latest
+    ports:
+      - "8761:8761"
+    environment:
+      - EUREKA_HOST=discovery
+
+  #Spring cloud config server
+  configservice:
+    container_name: configserver
+    image: jbprek/mcsvc-infra-config-service:latest
+    ports:
+      - "8888:8888"
+    depends_on:
+      - discovery
+    environment:
+      - EUREKA_HOST=discovery
+      - GIT_URL=https://github.com/jbprek/mcsvc-infra-config-service-repository.git
+      - GIT_USERNAME=jbprek
+      - GIT_PASSWORD=${GIT_PASSWORD}
+
+  #Example microservice using discovery and spring cloud config
+#  admin:
+#    container_name: adminservice
+#    ports:
+#      - "9000:9000"
+#    image: jbprek/mcsvc-infra-admin-service:latest
+#    depends_on:
+#      - discovery
+#      - configservice
+
+
+

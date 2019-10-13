@@ -1,0 +1,14 @@
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+
+# Maven
+mvnw
+mvnw.cmd
+log/
+mcsvc-infra-eureka-service/target/
+
+

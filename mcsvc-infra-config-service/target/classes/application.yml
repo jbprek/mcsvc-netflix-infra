@@ -1,0 +1,45 @@
+server:
+  port: 8888
+
+logging:
+  path: ./logs/spring-boot-logger.lo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+eureka:
+  instance:
+    hostname: ${EUREKA_HOST:localhost}
+  client:
+    serviceUrl:
+      service-url:
+        defaultZone: http://${eureka.instance.hostname}:8761
+    healthcheck:
+      enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+
+
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: false
+      server:
+        git:
+          uri: ${GIT_URL}
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
+          #false will allow the config server to start without git and fallback to it's local copy
+          clone-on-start: false
+          timeout: 60
+          # forces pull if the index is dirty, removing local changes
+          force-pull: true
+
+encrypt:
+  # Symmetric encryption
+  key: set-on-startup
