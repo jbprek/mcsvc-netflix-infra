@@ -12,29 +12,29 @@ management:
 
 eureka:
   instance:
-    prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: ${MCSVC_EUREKA_HOST_1_URL}
+      defaultZone: http://${EUREKA_HOST}:8761/eureka
     healthcheck:
       enabled: true
+    register-with-eureka: true
+    fetch-registry: true
 
 
 spring:
   cloud:
     config:
+      discovery:
+        enabled: true
       server:
         git:
-          uri: ${MCSVC_CONFIG_GIT_URL}
-          username: ${MCSVC_CONFIG_GIT_USERNAME}
-          password: ${MCSVC_CONFIG_GIT_PASSWORD}
+          uri: ${GIT_URL}
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
           #false will allow the config server to start without git and fallback to it's local copy
-          clone-on-start: false
+          clone-on-start: true
           timeout: 60
           # forces pull if the index is dirty, removing local changes
           force-pull: true
 
 
-encrypt:
-  # Symmetric encryption
-  key: set-on-startup

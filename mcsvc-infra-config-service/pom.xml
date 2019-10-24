@@ -93,10 +93,10 @@
                             <jvmFlag>-Xmx128m</jvmFlag>
                         </jvmFlags>
                         <environment>
-                            <MCSVC_EUREKA_HOST_1_URL>set through --env</MCSVC_EUREKA_HOST_1_URL>
-                            <MCSVC_CONFIG_GIT_URL>set through --env</MCSVC_CONFIG_GIT_URL>
-                            <MCSVC_CONFIG_GIT_USERNAME>set through --env</MCSVC_CONFIG_GIT_USERNAME>
-                            <MCSVC_CONFIG_GIT_PASSWORD>set through --env</MCSVC_CONFIG_GIT_PASSWORD>
+                            <EUREKA_HOST>set through --env</EUREKA_HOST>
+                            <GIT_URL>set through --env</GIT_URL>
+                            <GIT_USERNAME>set through --env</GIT_USERNAME>
+                            <GIT_PASSWORD>set through --env</GIT_PASSWORD>
                         </environment>
                     </container>
                 </configuration>

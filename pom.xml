@@ -8,7 +8,7 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.foo.mcsvc.infra</groupId>
+    <groupId>org.bagab.mcsvcinfra</groupId>
     <artifactId>mcsvc-netflix-infra</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <name>mcsvc-netflix-infra</name>
@@ -26,10 +26,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-        <jib.version>1.6.1</jib.version>
+        <jib.version>1.7.0</jib.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <docker.base.image>gcr.io/distroless/java:11</docker.base.image>
-<!--        <docker.base.image>docker://adoptopenjdk:11-hotspot-bionic</docker.base.image>-->
         <docker.target.tag>0.2-11</docker.target.tag>
     </properties>
 

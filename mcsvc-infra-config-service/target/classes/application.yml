@@ -10,14 +10,11 @@ management:
       exposure:
         include: '*'
 
-
 eureka:
   instance:
-    hostname: ${EUREKA_HOST:localhost}
   client:
     serviceUrl:
-      service-url:
-        defaultZone: http://${eureka.instance.hostname}:8761
+      defaultZone: http://${EUREKA_HOST}:8761/eureka
     healthcheck:
       enabled: true
     register-with-eureka: true
@@ -28,18 +25,16 @@ spring:
   cloud:
     config:
       discovery:
-        enabled: false
+        enabled: true
       server:
         git:
           uri: ${GIT_URL}
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
           #false will allow the config server to start without git and fallback to it's local copy
-          clone-on-start: false
+          clone-on-start: true
           timeout: 60
           # forces pull if the index is dirty, removing local changes
           force-pull: true
 
-encrypt:
-  # Symmetric encryption
-  key: set-on-startup
+

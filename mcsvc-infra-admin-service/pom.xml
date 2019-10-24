@@ -8,7 +8,7 @@
         <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.foo.mcsvc</groupId>
+    <groupId>org.foo.mcsvc</groupId>
     <artifactId>mcsvc-infra-admin-service</artifactId>
     <version>0.9.4-SNAPSHOT</version>
     <name>mcsvc-infra-admin-service</name>
