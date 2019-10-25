@@ -30,5 +30,7 @@ build/
 .vscode/
 **/target/
 
+## Log files
+*.log
 
 /secrets.md
