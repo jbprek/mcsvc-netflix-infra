@@ -3,6 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
+    <parent>
+        <groupId>org.bagab.mcsvcinfra</groupId>
+        <artifactId>mcsvc-netflix-infra</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
+    </parent>
     <groupId>mcsv-common</groupId>
     <artifactId>mcsvc-infra-config-service</artifactId>
     <version>0.9.4-SNAPSHOT</version>
@@ -10,23 +16,6 @@
 
     <name>mcsvc-infra-config-service</name>
     <description>Microservice Config Server</description>
-
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-        <jib.version>1.2.0</jib.version>
-    </properties>
 
 
     <dependencies>
@@ -54,18 +43,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -75,39 +52,6 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>${jib.version}</version>
-                <configuration>
-                    <from>
-                        <image>gcr.io/distroless/java:11</image>
-                    </from>
-                    <to>
-                        <image>jbprek/${project.artifactId}</image>
-                        <tags>
-                            <tag>0.9.4</tag>
-                            <tag>latest</tag>
-                        </tags>
-                    </to>
-                    <container>
-                        <useCurrentTimestamp>true</useCurrentTimestamp>
-                        <jvmFlags>
-                            <jvmFlag>-Xmx128m</jvmFlag>
-                        </jvmFlags>
-                        <environment>
-                            <EUREKA_HOST>set through --env</EUREKA_HOST>
-                            <GIT_URL>set through --env</GIT_URL>
-                            <GIT_USERNAME>set through --env</GIT_USERNAME>
-                            <GIT_PASSWORD>set through --env</GIT_PASSWORD>
-                        </environment>
-                    </container>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>dockerBuild</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

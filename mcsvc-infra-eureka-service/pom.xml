@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- TODO Fix -->
     <scm>
-        <connection>scm:git:https://github.com/jbprek/mcsvc-infra-eureka-service.git</connection>
-        <developerConnection>scm:git:https://github.com/jbprek/mcsvc-infra-eureka-service.git</developerConnection>
-        <url>scm:git:https://github.com/jbprek/mcsvc-infra-eureka-service.git</url>
+        <connection>scm:git:https://github.com/mcsvc-infra-eureka-service.git</connection>
+        <developerConnection>scm:git:https://github.com/mcsvc-infra-eureka-service.git</developerConnection>
+        <url>scm:git:https://github.com/mcsvc-infra-eureka-service.git</url>
     </scm>
 
     <parent>
@@ -56,16 +56,7 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>${jib.version}</version>
-                <configuration>
-                    <container>
-                        <environment>
-                            <EUREKA_HOST>set through the environment</EUREKA_HOST>
-                        </environment>
-                    </container>
-                </configuration>
             </plugin>
-
         </plugins>
     </build>
 

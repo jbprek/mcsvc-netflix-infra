@@ -26,5 +26,5 @@ mvn spring-boot:run
 ```
 mvn compile jib:dockerBuild
 
-docker run --name mcsvc-infra-eureka-service -d -p8761:8761 jbprek/mcsvc-infra-eureka-service:latest
+docker run --name mcsvc-infra-eureka-service -d -p8761:8761 mcsvc-infra-eureka-service:latest
 ```
