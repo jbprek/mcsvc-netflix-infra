@@ -6,10 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableAdminServer
 @SpringBootApplication
-public class McsvcInfraAdminServiceApplication {
+public class SpringBootAdminServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(McsvcInfraAdminServiceApplication.class, args);
+        SpringApplication.run(SpringBootAdminServiceApplication.class, args);
     }
+
 
 }

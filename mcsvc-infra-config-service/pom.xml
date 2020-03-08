@@ -11,7 +11,6 @@
     </parent>
     <groupId>mcsv-common</groupId>
     <artifactId>mcsvc-infra-config-service</artifactId>
-    <version>0.9.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>mcsvc-infra-config-service</name>
@@ -30,6 +29,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -1,9 +1,6 @@
 server:
   port: 8761
 
-logging:
-  path: ./logs/spring-boot-logger.lo
-
 management:
   endpoints:
     web:
@@ -11,13 +8,12 @@ management:
         include: '*'
 
 eureka:
-#  instance:
-#    hostname: ${EUREKA_HOST:localhost}
+  instance: ${EUREKA_HOST:localhost}
   client:
     fetch-registry: false
     register-with-eureka: false
-#    service-url:
-#      defaultZone: http://${eureka.instance.hostname}:8761
+    service-url:
+      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
   server:
     enable-self-preservation: false
 
