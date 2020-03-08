@@ -9,51 +9,45 @@ services:
       - "8761:8761"
     environment:
       - EUREKA_HOST=mcsvc-eureka-service
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+    networks:
+      - discovery
+    restart: on-failure
 
   #Spring cloud config server
-  configservice:
+  config:
     container_name: mcsvc-config-service
     image: mcsvc-infra-config-service:latest
     ports:
       - "8888:8888"
     depends_on:
-      - gogs
       - discovery
     environment:
       - EUREKA_HOST=mcsvc-eureka-service
       - GIT_URL=${GIT_URL}
       - GIT_USERNAME=${GIT_USERNAME}
       - GIT_PASSWORD=${GIT_PASSWORD}
+    networks:
+      - discovery
     restart: on-failure
 
-  constants-service:
-    container_name: mcsvc-util-constants-service
-    image: mcsvc-util-constants-service:latest
+    #Codecentic Spring Boot Admin
+  admin:
+    container_name: mcsvc-admin-service
+    image: mcsvc-infra-admin-service:latest
     ports:
-      - "8080:8080"
+      - "9000:9000"
     depends_on:
-      - configservice
+      - discovery
+      - config
     environment:
       - EUREKA_HOST=mcsvc-eureka-service
+    networks:
+      - discovery
     restart: on-failure
 
-volumes:
-  gogs-data:
-    external: true
-
-
-
-
-  #Example microservice using discovery and spring cloud config
-#  admin:
-#    container_name: adminservice
-#    ports:
-#      - "9000:9000"
-#    image: mcsvc-infra-admin-service:latest
-#    depends_on:
-#      - discovery
-#      - configservice
-
+networks:
+  discovery:
 
 
 
