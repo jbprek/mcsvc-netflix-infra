@@ -93,6 +93,10 @@
                         <image>${docker.base.image}</image>
                     </from>
                     <to>
+                        <tags>
+                            <tag>${my.version}</tag>
+                            <tag>latest</tag>
+                        </tags>
                         <image>${project.artifactId}</image>
                     </to>
                 </configuration>
