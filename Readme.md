@@ -11,7 +11,7 @@ mvn clean install
 
 ## Build Docker images
 ```
-mvn spring-boot:build-image
+mvn clean spring-boot:build-image
 ```
 # TODO
  - config security/encryption
