@@ -5,11 +5,10 @@
 
 
     <parent>
-        <groupId>org.bagab.mcsvcinfra</groupId>
+        <groupId>org.prekezes.mcsvc.netflix.infra</groupId>
         <artifactId>mcsvc-netflix-infra</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
-    <groupId>mcsv-common</groupId>
     <artifactId>mcsvc-infra-config-service</artifactId>
     <packaging>jar</packaging>
 
@@ -38,16 +37,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -56,12 +46,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
-
 
 </project>

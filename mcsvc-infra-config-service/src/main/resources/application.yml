@@ -8,28 +8,10 @@ management:
         include: '*'
 
 eureka:
-  instance:
   client:
     serviceUrl:
-      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
     healthcheck:
       enabled: true
     register-with-eureka: true
     fetch-registry: true
-
-spring:
-  cloud:
-    config:
-      discovery:
-        enabled: true
-      server:
-        git:
-          uri: ${GIT_URL}
-          username: ${GIT_USERNAME}
-          password: ${GIT_PASSWORD}
-          #false will allow the config server to start without git and fallback to it's local copy
-          clone-on-start: true
-          timeout: 60
-          # forces pull if the index is dirty, removing local changes
-          force-pull: true
-

@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
+        <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.bagab.mcsvcinfra</groupId>
+    <groupId>org.prekezes.mcsvc.netflix.infra</groupId>
     <artifactId>mcsvc-netflix-infra</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>mcsvc-netflix-infra</name>
     <packaging>pom</packaging>
     <description>Boot Netflix Infrastructure microservices</description>
@@ -24,37 +24,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <jib.version>1.8.0</jib.version>
-        <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
-        <my.version>0.9</my.version>
+        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
     </properties>
 
 
-    <profiles>
-        <profile>
-            <id>java11</id>
-            <activation>
-                <jdk>11</jdk>
-            </activation>
-            <properties>
-                <maven.compiler.release>11</maven.compiler.release>
-                <docker.base.image>gcr.io/distroless/java:11</docker.base.image>
-                <docker.target.tag>${my.version}-11</docker.target.tag>
-            </properties>
-        </profile>
-        <profile>
-            <id>java8</id>
-            <activation>
-                <jdk>8</jdk>
-            </activation>
-            <properties>
-                <java.version>8</java.version>
-                <docker.base.image>gcr.io/distroless/java:8</docker.base.image>
-                <docker.target.tag>${my.version}-8</docker.target.tag>
-            </properties>
-        </profile>
-    </profiles>
 
     <dependencyManagement>
         <dependencies>
@@ -84,28 +58,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>${jib.version}</version>
-                <configuration>
-                    <from>
-                        <image>${docker.base.image}</image>
-                    </from>
-                    <to>
-                        <image>${project.artifactId}</image>
-                    </to>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>dockerBuild</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
         </pluginManagement>
     </build>

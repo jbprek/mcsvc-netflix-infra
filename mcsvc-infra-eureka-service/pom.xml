@@ -2,17 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- TODO Fix -->
-    <scm>
-        <connection>scm:git:https://github.com/mcsvc-infra-eureka-service.git</connection>
-        <developerConnection>scm:git:https://github.com/mcsvc-infra-eureka-service.git</developerConnection>
-        <url>scm:git:https://github.com/mcsvc-infra-eureka-service.git</url>
-    </scm>
 
     <parent>
-        <groupId>org.bagab.mcsvcinfra</groupId>
+        <groupId>org.prekezes.mcsvc.netflix.infra</groupId>
         <artifactId>mcsvc-netflix-infra</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
     <artifactId>mcsvc-infra-eureka-service</artifactId>
     <packaging>jar</packaging>
@@ -48,7 +42,6 @@
             <artifactId>jaxb-core</artifactId>
             <version>2.3.0</version>
         </dependency>
-
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
@@ -57,12 +50,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -71,12 +58,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
-
 
 </project>

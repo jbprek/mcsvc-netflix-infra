@@ -7,3 +7,5 @@
 # TODO
  - config security/encryption
  - admin security configuration for clients
+ - Eureka does not appear on admin console
+ - Logging does not appear on logging console

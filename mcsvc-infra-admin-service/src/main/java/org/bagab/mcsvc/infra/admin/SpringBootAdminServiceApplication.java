@@ -12,5 +12,4 @@ public class SpringBootAdminServiceApplication {
         SpringApplication.run(SpringBootAdminServiceApplication.class, args);
     }
 
-
 }
