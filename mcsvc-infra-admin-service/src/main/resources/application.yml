@@ -6,12 +6,3 @@ management:
     web:
       exposure:
         include: '*'
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_HOST:localhost}:8761/eureka
-    healthcheck:
-      enabled: true
-    register-with-eureka: true
-    fetch-registry: true

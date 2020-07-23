@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  * <p/>On the new call the service will recreate the index
  */
 @ControllerAdvice
-//@ConditionalOnProperty(prefix="spring.cloud.config.server.git", value="uri")
+@ConditionalOnProperty(prefix="spring.cloud.config.server.git", value="uri")
 public class GitIndexExceptionHandler extends ResponseEntityExceptionHandler {
 
     private final JGitEnvironmentRepository jGitEnvironmentRepository;
