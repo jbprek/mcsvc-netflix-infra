@@ -24,8 +24,11 @@ mvn spring-boot:run
 
 ### Docker Build & Container creation, Initial run
 ```
+
+mvn spring-boot:build-image
 mvn clean install spring-boot:build-image -Dspring-boot.build-image.imageName=jbprek/mcsvc-infra-eureka-service
 
+mvn 
 docker push jbprek/mcsvc-infra-eureka-service
 
 docker run --name mcsvc-infra-eureka-service -d -p8761:8761 jbprek/mcsvc-infra-eureka-service:latest
