@@ -2,27 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-    <groupId>org.prekezes.mcsvc.netflix.infra</groupId>
+
+    <groupId>com.foo.mcsvc.netflix.infra</groupId>
     <artifactId>mcsvc-netflix-infra</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>2.7-2021.0.0</version>
+
     <name>mcsvc-netflix-infra</name>
     <packaging>pom</packaging>
     <description>Boot Netflix Infrastructure microservices</description>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
+    <properties>
+        <java.version>11</java.version>
+        <jib-maven-plugin-version>3.4.0</jib-maven-plugin-version>
+        <maven-compiler-plugin-version>3.12.1</maven-compiler-plugin-version>
+        <spring-boot-version>2.7.14</spring-boot-version>
+        <spring-cloud-version>2021.0.9</spring-cloud-version>
+        <spring-boot-admin-version>2.2.3</spring-boot-admin-version>
+    </properties>
 
     <modules>
         <module>mcsvc-infra-eureka-service</module>
@@ -30,51 +26,60 @@
         <module>mcsvc-infra-admin-service</module>
     </modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
-        <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
-    </properties>
-
-
-
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <version>${spring-cloud-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
+                <version>${spring-boot-admin-version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-
     <build>
         <pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <env>
-                            <BP_JVM_VERSION>11.0.8</BP_JVM_VERSION>
-                        </env>
-                        <name>jbprek/${project.artifactId}</name>
-                    </image>
-                </configuration>
-            </plugin>
-        </plugins>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.google.cloud.tools</groupId>
+                    <artifactId>jib-maven-plugin</artifactId>
+                    <version>${jib-maven-plugin-version}</version>
+                    <configuration>
+                        <to>
+                            <image>jbprek/${parent.artifactId}-${project.artifactId}:${project.version}</image>
+                        </to>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 
